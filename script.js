@@ -3,9 +3,12 @@
 // Select elements
 
 
+const player0EL = document.querySelector('.player--0')
+const player0EL = document.querySelector('.player--1')
 
 const score0 = document.querySelector('#score--0');
 const scoreEL = document.getElementById('score--1');
+
 const current0El = document.getElemebtById('current--0');
 const current1El = document.getElementById('current--1');
 
@@ -51,7 +54,8 @@ if (dice !== 1) {
     currentScore += dice ;
     current0El.textContent = currentScore // CHANGE LATER
 
-    document.getElementById(`current--${actualPlayer}`).textContent = currentScore;
+    document.getElementById(`current--${actualPlayer}`
+    ).textContent = currentScore;
 
 }
 else {
@@ -59,7 +63,20 @@ else {
 
     // need to practice ternery operators
     // if active player is 0 then the new active player should 1 if else 0.
-activePlayer = activePlayer === 0 ? 1 : 0;
+    currentScore += dice ;
+    current0El.textContent = currentScore // CHANGE LATER
 
+    document.getElementById(`current--${actualPlayer}`
+    ).textContent = currentScore;
+    
+    activePlayer = activePlayer === 0 ? 1 : 0;
+    currentScore = 0;
+    document.querySelector('').
+
+    //toggle -  toggles back and forth
+    // we ususally use classlist and now toggle class on classlist Property
+    player0EL.classList.toggle('player--active');
+    player1EL.classList.toggle('player--active');
+}
 }
 })

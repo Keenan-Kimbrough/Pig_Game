@@ -4,7 +4,7 @@
 
 
 const player0EL = document.querySelector('.player--0')
-const player0EL = document.querySelector('.player--1')
+const player1EL = document.querySelector('.player--1')
 
 const score0 = document.querySelector('#score--0');
 const scoreEL = document.getElementById('score--1');
@@ -52,12 +52,8 @@ const switchPlayer = function () {
 
 // rolin dice functionality 
 
-btnRoll.addEventListener('click', function () {
-
-    //1. gerenting random dice roll
- const dice = Math.trunc(Math.random()* 6) +1;
-
- 
+btnRoll.addEventListener('click', function () { const dice =
+     Math.trunc(Math.random()* 6) +1;
 
 
     // 2. display dice
@@ -86,15 +82,15 @@ else {
     current0El.textContent = currentScore // CHANGE LATER
 
     
-}
-)
+} })
+
 
 btnHold.addEventListener('click', function () {
     //add current score to active player
 scores[activePlayer] += currentScore;
 //scores[1] = score[1] + currentScore
 
-document.getElemtentById(`current--${activePlayer}`).textContent = 
+document.getElemtentById(`score--${activePlayer}`).textContent = 
 scores[activePlayer]
     //2. check is player score is >= 100
     // finish the game

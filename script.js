@@ -32,6 +32,24 @@ diceEl.classList.add('hidden');
 const scores = [0, 0]
 let currentScore = 0;
 let activePlayer = 0;
+
+
+//funtion swith player
+const switchPlayer = function () {
+    document.getElementById(`current--${actualPlayer}`
+    ).textContent = currentScore;
+    
+    activePlayer = activePlayer === 0 ? 1 : 0;
+    currentScore = 0;
+    document.querySelector('').
+
+    //toggle -  toggles back and forth
+    // we ususally use classlist and now toggle class on classlist Property
+    player0EL.classList.toggle('player--active');
+    player1EL.classList.toggle('player--active');
+}
+
+
 // rolin dice functionality 
 
 btnRoll.addEventListener('click', function () {
@@ -60,23 +78,27 @@ if (dice !== 1) {
 }
 else {
     // switch to next player
+    switchPlayer();
 
     // need to practice ternery operators
     // if active player is 0 then the new active player should 1 if else 0.
     currentScore += dice ;
     current0El.textContent = currentScore // CHANGE LATER
 
-    document.getElementById(`current--${actualPlayer}`
-    ).textContent = currentScore;
     
-    activePlayer = activePlayer === 0 ? 1 : 0;
-    currentScore = 0;
-    document.querySelector('').
+}
+)
 
-    //toggle -  toggles back and forth
-    // we ususally use classlist and now toggle class on classlist Property
-    player0EL.classList.toggle('player--active');
-    player1EL.classList.toggle('player--active');
-}
-}
+btnHold.addEventListener('click', function () {
+    //add current score to active player
+scores[activePlayer] += currentScore;
+//scores[1] = score[1] + currentScore
+
+document.getElemtentById(`current--${activePlayer}`).textContent = 
+scores[activePlayer]
+    //2. check is player score is >= 100
+    // finish the game
+
+    // switch to next player
+    switchPlayer ();
 })

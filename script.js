@@ -27,7 +27,7 @@ diceEl.classList.add('hidden');
 
 
 const scores = [0, 0]
-let currentSCore = 0;
+let currentScore = 0;
 let activePlayer = 0;
 // rolin dice functionality 
 
@@ -48,13 +48,18 @@ diceEl.src = `dice - ${dice}.png`
 if (dice !== 1) {
 
     // add dice to current score
-    currentSCore += dice ;
+    currentScore += dice ;
     current0El.textContent = currentScore // CHANGE LATER
+
+    document.getElementById(`current--${actualPlayer}`).textContent = currentScore;
 
 }
 else {
     // switch to next player
 
+    // need to practice ternery operators
+    // if active player is 0 then the new active player should 1 if else 0.
+activePlayer = activePlayer === 0 ? 1 : 0;
 
 }
 })

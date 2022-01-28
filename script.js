@@ -32,6 +32,7 @@ diceEl.classList.add('hidden');
 const scores = [0, 0]
 let currentScore = 0;
 let activePlayer = 0;
+let playing = true;
 
 
 //funtion swith player
@@ -52,8 +53,10 @@ const switchPlayer = function () {
 
 // rolin dice functionality 
 
-btnRoll.addEventListener('click', function () { const dice =
-     Math.trunc(Math.random()* 6) +1;
+btnRoll.addEventListener('click', function () { 
+    if (playing) {
+    
+    const dice = Math.trunc(Math.random()* 6) +1;
 
 
     // 2. display dice
@@ -82,19 +85,29 @@ else {
     current0El.textContent = currentScore // CHANGE LATER
 
     
-} })
+} } })
 
 
 btnHold.addEventListener('click', function () {
     //add current score to active player
 scores[activePlayer] += currentScore;
 //scores[1] = score[1] + currentScore
-
+if (playing) {
 document.getElemtentById(`score--${activePlayer}`).textContent = 
 scores[activePlayer]
     //2. check is player score is >= 100
     // finish the game
+    if (scores[activePlayer] >= 20) {
+        playing = false;
 
+        diceEl.classList.add('hidden');
+        document.querySelector(`.player--${activePlayer}`).classList.add('player--winner')
+
+        document.querySelector(`.player--${activePlayer}`).classList.add('player--active')
+    }
+    else {
+
+    }
     // switch to next player
     switchPlayer ();
-})
+}})

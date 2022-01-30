@@ -44,12 +44,12 @@ init();
 //funtion swith player
 const switchPlayer = function () {
   document.getElementById(`current--${activePlayer}`).textContent = 0
-    currentScore;
+    
 console.log('works')
     // if active player is 0 then the new active player should 1 if else 0.
-
+    currentScore = 0 ;
   activePlayer = activePlayer === 0 ? 1 : 0;
-  currentScore = 0 ;
+  
   
     //toggle -  toggles back and forth
     // we ususally use classlist and now toggle class on classlist Property
@@ -74,20 +74,26 @@ btnRoll.addEventListener('click', function () {
     if (dice !== 1) {
       // add dice to current score
       currentScore += dice;
-      current0El.textContent = currentScore; // CHANGE LATER
+     
 
-      document.getElementById(`current--${activePlayer}`).textContent =
-        currentScore;
+      document.getElementById(`current--${activePlayer}`).textContent = currentScore;
     } 
     
     else {
+      
+     
       // switch to next player
-      switchPlayer();
+      
 
       // need to practice ternery operators
       
+      
       currentScore += dice;
-      current0El.textContent = currentScore; // CHANGE LATER
+
+      scores[activePlayer] += currentScore
+      document.getElementById(`score--${activePlayer}`).textContent = currentScore; // CHANGE LATER
+
+      switchPlayer();
     }
   }
 });

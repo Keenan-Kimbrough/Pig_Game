@@ -75,6 +75,7 @@ btnRoll.addEventListener("click", function () {
 
       document.getElementById(`current--${activePlayer}`).textContent =
         currentScore;
+        
     } else {
       // switch to next player
 
@@ -84,11 +85,15 @@ btnRoll.addEventListener("click", function () {
 
       scores[activePlayer] += currentScore;
       document.getElementById(`score--${activePlayer}`).textContent =
-        currentScore; // CHANGE LATER
+        scores[activePlayer]; // CHANGE LATER
 
-      if (scores[activePlayer] >= 20) {
-        playing = false;
+      if (scores[activePlayer] >= 100) {
+        playing = false;scores[activePlayer] += currentScore
 
+
+        scores[activePlayer] += currentScore;
+      document.getElementById(`score--${activePlayer}`).textContent =
+        scores[activePlayer];
         diceEl.classList.add("hidden");
         document
           .querySelector(`.player--${activePlayer}`)
@@ -117,7 +122,7 @@ btnHold.addEventListener("click", function () {
   }
   //2. check is player score is >= 100
   // finish the game
-  if (scores[activePlayer] >= 20) {
+  if (scores[activePlayer] >= 100) {
     playing = false;
 
     diceEl.classList.add("hidden");

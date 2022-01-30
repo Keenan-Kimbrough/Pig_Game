@@ -43,14 +43,14 @@ init();
 
 //funtion swith player
 const switchPlayer = function () {
-  document.getElementById(`current--${activePlayer}`).textContent =
+  document.getElementById(`current--${activePlayer}`).textContent = 0
     currentScore;
-
+console.log('works')
     // if active player is 0 then the new active player should 1 if else 0.
 
   activePlayer = activePlayer === 0 ? 1 : 0;
-  currentScore = 0;
-  document.querySelector("")
+  currentScore = 0 ;
+  
     //toggle -  toggles back and forth
     // we ususally use classlist and now toggle class on classlist Property
   player0EL.classList.toggle("player--active");
@@ -61,6 +61,8 @@ const switchPlayer = function () {
 
 btnRoll.addEventListener('click', function () {
   if (playing) {
+
+    // random dice roll 
     const dice = Math.trunc(Math.random() * 6) + 1;
 
     // 2. display dice
@@ -74,9 +76,11 @@ btnRoll.addEventListener('click', function () {
       currentScore += dice;
       current0El.textContent = currentScore; // CHANGE LATER
 
-      document.getElementById(`current--${actualPlayer}`).textContent =
+      document.getElementById(`current--${activePlayer}`).textContent =
         currentScore;
-    } else {
+    } 
+    
+    else {
       // switch to next player
       switchPlayer();
 

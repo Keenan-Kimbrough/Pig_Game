@@ -16,6 +16,7 @@ const btnNew = document.querySelector(".btn--new");
 const btnRoll = document.querySelector(".btn--roll");
 const btnHold = document.querySelector(".btn--hold");
 
+
 let currentScore, activePlayer, playing, scores;
 
 // Starting conditions
@@ -42,7 +43,7 @@ init();
 
 //funtion swith player
 const switchPlayer = function () {
-  document.getElementById(`current--${actualPlayer}`).textContent =
+  document.getElementById(`current--${activePlayer}`).textContent =
     currentScore;
 
     // if active player is 0 then the new active player should 1 if else 0.

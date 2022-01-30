@@ -88,10 +88,11 @@ btnRoll.addEventListener("click", function () {
         scores[activePlayer]; // CHANGE LATER
 
       if (scores[activePlayer] >= 100) {
-        playing = false;scores[activePlayer] += currentScore
+        playing = false;
+        
 
 
-        scores[activePlayer] += currentScore;
+        
       document.getElementById(`score--${activePlayer}`).textContent =
         scores[activePlayer];
         diceEl.classList.add("hidden");

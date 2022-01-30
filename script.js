@@ -45,7 +45,7 @@ init();
 const switchPlayer = function () {
   document.getElementById(`current--${activePlayer}`).textContent = 0
     
-console.log('works')
+console.log('Switch Player Function works')
     // if active player is 0 then the new active player should 1 if else 0.
     currentScore = 0 ;
   activePlayer = activePlayer === 0 ? 1 : 0;
@@ -70,6 +70,8 @@ btnRoll.addEventListener('click', function () {
     diceEl.classList.remove("hidden");
 
     diceEl.src = `dice-${dice}.png`;
+
+    
     // 3. check for rolled 1; if true, switch to next player
     if (dice !== 1) {
       // add dice to current score
@@ -93,7 +95,31 @@ btnRoll.addEventListener('click', function () {
       scores[activePlayer] += currentScore
       document.getElementById(`score--${activePlayer}`).textContent = currentScore; // CHANGE LATER
 
-      switchPlayer();
+       if (scores[activePlayer] >= 20)
+      {
+        playing = false;
+
+        diceEl.classList.add("hidden");
+        document
+          .querySelector(`.player--${activePlayer}`)
+          .classList.add("player--winner");
+  
+        document
+          .querySelector(`.player--${activePlayer}`)
+          .classList.add("player--active");
+  
+
+
+      }
+      else {
+        
+        switchPlayer()
+      
+      
+      }
+
+
+      ;
     }
   }
 });
@@ -103,8 +129,11 @@ btnHold.addEventListener("click", function () {
   scores[activePlayer] += currentScore;
   //scores[1] = score[1] + currentScore
   if (playing) {
-    document.getElemtentById(`score--${activePlayer}`).textContent =
+    document.getElementById(`score--${activePlayer}`).textContent =
       scores[activePlayer];
+      console.log('button hold works if playing works')
+
+  }
     //2. check is player score is >= 100
     // finish the game
     if (scores[activePlayer] >= 20) {
@@ -118,11 +147,13 @@ btnHold.addEventListener("click", function () {
       document
         .querySelector(`.player--${activePlayer}`)
         .classList.add("player--active");
+
+        console.log('hold, winner game button hold works')
     } else {
-    }
+    
     // switch to next player
-    switchPlayer();
+    switchPlayer();}
   }
-});
+);
 
 btnNew.addEventListener("click", init);

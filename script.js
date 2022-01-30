@@ -6,7 +6,7 @@ const player0EL = document.querySelector(".player--0");
 const player1EL = document.querySelector(".player--1");
 
 const score0El = document.querySelector("#score--0");
-const score1El = document.getElementById("score--1");
+const score1El = document.querySelector("#score--1");
 
 const current0El = document.getElementById("current--0");
 const current1El = document.getElementById("current--1");
@@ -19,7 +19,7 @@ const btnHold = document.querySelector(".btn--hold");
 
 let currentScore, activePlayer, playing, scores;
 
-// Starting conditions
+// Starting condition
 
 const init = function () {
   scores = [0, 0];
@@ -34,9 +34,9 @@ const init = function () {
 
   diceEl.classList.add("hidden");
   player0EL.classList.remove("player--winner");
-  player0EL.classList.remove("player--winner");
+  player1EL.classList.remove("player--winner");
   player0EL.classList.add("player--active");
-  player0EL.classList.remove("player--active");
+  player1EL.classList.remove("player--active");
 };
 // stats logic from start of application
 init();
@@ -50,11 +50,10 @@ const switchPlayer = function () {
 
   activePlayer = activePlayer === 0 ? 1 : 0;
   currentScore = 0;
-  document
-    .querySelector("")
+  document.querySelector("")
     //toggle -  toggles back and forth
     // we ususally use classlist and now toggle class on classlist Property
-    .player0EL.classList.toggle("player--active");
+  player0EL.classList.toggle("player--active");
   player1EL.classList.toggle("player--active");
 };
 

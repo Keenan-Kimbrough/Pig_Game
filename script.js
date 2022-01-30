@@ -16,7 +16,6 @@ const btnNew = document.querySelector(".btn--new");
 const btnRoll = document.querySelector(".btn--roll");
 const btnHold = document.querySelector(".btn--hold");
 
-
 let currentScore, activePlayer, playing, scores;
 
 // Starting condition
@@ -43,26 +42,24 @@ init();
 
 //funtion swith player
 const switchPlayer = function () {
-  document.getElementById(`current--${activePlayer}`).textContent = 0
-    
-console.log('Switch Player Function works')
-    // if active player is 0 then the new active player should 1 if else 0.
-    currentScore = 0 ;
+  document.getElementById(`current--${activePlayer}`).textContent = 0;
+
+  console.log("Switch Player Function works");
+  // if active player is 0 then the new active player should 1 if else 0.
+  currentScore = 0;
   activePlayer = activePlayer === 0 ? 1 : 0;
-  
-  
-    //toggle -  toggles back and forth
-    // we ususally use classlist and now toggle class on classlist Property
+
+  //toggle -  toggles back and forth
+  // we ususally use classlist and now toggle class on classlist Property
   player0EL.classList.toggle("player--active");
   player1EL.classList.toggle("player--active");
 };
 
 // rolin dice functionality
 
-btnRoll.addEventListener('click', function () {
+btnRoll.addEventListener("click", function () {
   if (playing) {
-
-    // random dice roll 
+    // random dice roll
     const dice = Math.trunc(Math.random() * 6) + 1;
 
     // 2. display dice
@@ -71,55 +68,40 @@ btnRoll.addEventListener('click', function () {
 
     diceEl.src = `dice-${dice}.png`;
 
-    
     // 3. check for rolled 1; if true, switch to next player
     if (dice !== 1) {
       // add dice to current score
       currentScore += dice;
-     
 
-      document.getElementById(`current--${activePlayer}`).textContent = currentScore;
-    } 
-    
-    else {
-      
-     
+      document.getElementById(`current--${activePlayer}`).textContent =
+        currentScore;
+    } else {
       // switch to next player
-      
 
       // need to practice ternery operators
-      
-      
+
       currentScore += dice;
 
-      scores[activePlayer] += currentScore
-      document.getElementById(`score--${activePlayer}`).textContent = currentScore; // CHANGE LATER
+      scores[activePlayer] += currentScore;
+      document.getElementById(`score--${activePlayer}`).textContent =
+        currentScore; // CHANGE LATER
 
-       if (scores[activePlayer] >= 20)
-      {
+      if (scores[activePlayer] >= 20) {
         playing = false;
 
         diceEl.classList.add("hidden");
         document
           .querySelector(`.player--${activePlayer}`)
           .classList.add("player--winner");
-  
+
         document
           .querySelector(`.player--${activePlayer}`)
           .classList.add("player--active");
-  
-
-
+        console.log(" selecting winner works!");
+        alert("Congrats you won! ");
+      } else {
+        switchPlayer();
       }
-      else {
-        
-        switchPlayer()
-      
-      
-      }
-
-
-      ;
     }
   }
 });
@@ -131,29 +113,29 @@ btnHold.addEventListener("click", function () {
   if (playing) {
     document.getElementById(`score--${activePlayer}`).textContent =
       scores[activePlayer];
-      console.log('button hold works if playing works')
-
+    console.log("button hold works if playing works");
   }
-    //2. check is player score is >= 100
-    // finish the game
-    if (scores[activePlayer] >= 20) {
-      playing = false;
+  //2. check is player score is >= 100
+  // finish the game
+  if (scores[activePlayer] >= 20) {
+    playing = false;
 
-      diceEl.classList.add("hidden");
-      document
-        .querySelector(`.player--${activePlayer}`)
-        .classList.add("player--winner");
+    diceEl.classList.add("hidden");
+    document
+      .querySelector(`.player--${activePlayer}`)
+      .classList.add("player--winner");
 
-      document
-        .querySelector(`.player--${activePlayer}`)
-        .classList.add("player--active");
+    document
+      .querySelector(`.player--${activePlayer}`)
+      .classList.add("player--active");
 
-        console.log('hold, winner game button hold works')
-    } else {
-    
+    console.log("hold, winner game button hold works");
+
+    alert("Congrats you won! ");
+  } else {
     // switch to next player
-    switchPlayer();}
+    switchPlayer();
   }
-);
+});
 
 btnNew.addEventListener("click", init);

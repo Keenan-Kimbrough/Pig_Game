@@ -137,7 +137,7 @@ btnHold.addEventListener("click", function () {
 
     console.log("hold, winner game button hold works");
 
-    alert("Congrats you won! ");
+    alert(`Congrats you won! `);
   } else {
     // switch to next player
     switchPlayer();
